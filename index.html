@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <h1>this is title of div</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <button id="btn-share">share</button>
+    </div>
+
+
+
+    <script>
+        // here is js code 
+        let btn = document.querySelector('#btn-share') 
+        btn.addEventListener('click', async () => {
+
+            if (navigator.share) { 
+                try { 
+                    await navigator.share({
+                        title: document.querySelector('h1').textContent, 
+                        text: document.querySelector('p').textContent, 
+                        url: window.location.href 
+                    })
+                } catch (err) { 
+                    console.log(err);
+                    
+                }
+            } else { 
+                console.log('not supported');
+                
+            }
+
+        })
+
+    </script>
+</body>
+</html>
